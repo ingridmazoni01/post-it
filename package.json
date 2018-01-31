@@ -10,16 +10,17 @@
     "jest": "^22.1.4"
   },
   "scripts": {
+    "build":"babel js -d lib",
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/code-xp-front/post-it.git"
+    "url": "git+https://github.com/ingridmazoni01/post-it.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/code-xp-front/post-it/issues"
+    "url": "https://github.com/ingridmazoni01/post-it/issues"
   },
-  "homepage": "https://github.com/code-xp-front/post-it#readme"
+  "homepage": "https://github.com/ingridmazoni01/post-it#readme"
 }
