@@ -1,7 +1,7 @@
 var listaNotas = {
     secao: document.getElementsByClassName("notes")[0],
     listaInterna: [],
-    adiciona: function(novoTitulo, novoTexto) {
+    adiciona: (novoTitulo, novoTexto) => {
         var nota = {
             titulo: novoTitulo,
             texto: novoTexto,
@@ -10,15 +10,15 @@ var listaNotas = {
         this.listaInterna.push(nota);
         // atualizarSecao(this.secao);
     },
-    remove: function(posicao) {
+    remove: (posicao) => {
         this.listaInterna.splice(posicao, 1);
         atualizarSecao(this.secao);
     },
-    edita: function(posicao) {
+    edita: (posicao) => {
         this.listaInterna[posicao].editando = true;
         atualizarSecao(this.secao);
     },
-    salva: function(posicao, novoTitulo, novoTexto) {
+    salva:(posicao, novoTitulo, novoTexto) => {
         this.listaInterna[posicao].titulo = novoTitulo;
         this.listaInterna[posicao].texto = novoTexto;
         this.listaInterna[posicao].editando = false;
@@ -39,21 +39,21 @@ function atualizarSecao(secao) {
 
     for (var posicao = 0; posicao < listaNotas.contaTotal(); posicao++) {
         if (listaNotas.pega(posicao).editando) {
-            conteudoSecao += '<form class="note">'+
-                                '<input class="note__title" type="text" name="titulo" value="' + listaNotas.listaInterna[posicao].titulo + '" placeholder="Título">'+
-                                '<textarea class="note__body" name="texto" rows="5" placeholder="Criar uma nota...">' + listaNotas.listaInterna[posicao].texto +'</textarea>'+
-                                '<button class="note__control" type="button" onclick="adicionarNota(this.form.titulo, this.form.texto, this.form, ' + posicao +')">'+
-                                    'Concluído'+
-                                '</button>'+
-                             '</form>';
+            conteudoSecao += `<form class="note">
+                                <input class="note__title" type="text" name="titulo" value="${listaNotas.listaInterna[posicao].titulo}" placeholder="Título">
+                                <textarea class="note__body" name="texto" rows="5" placeholder="Criar uma nota..."> ${listaNotas.listaInterna[posicao].texto} </textarea>
+                                <button class="note__control" type="button" onclick="adicionarNota(this.form.titulo, this.form.texto, this.form, ${posicao} )">
+                                    Concluído
+                                </button>
+                             </form>`;
         } else {
-            conteudoSecao += '<form class="note" onclick="editaFormulario(' + posicao + ')">'+
-                                '<button class="note__control" type="button" onclick="removerNota(event,' + posicao + ')">'+
-                                    '<i class="fa fa-times" aria-hidden="true"></i>'+
-                                '</button>'+
-                                '<h1 class="note__title">' + listaNotas.listaInterna[posicao].titulo + '</h1>'+
-                                '<p class="note__body">' + listaNotas.listaInterna[posicao].texto + '</p>'+
-                             '</form>';
+            conteudoSecao += `<form class="note" onclick="editaFormulario(${posicao})">
+                                <button class="note__control" type="button" onclick="removerNota(event,${posicao})">
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                </button>
+                                <h1 class="note__title">${listaNotas.listaInterna[posicao].titulo} </h1>
+                                <p class="note__body"> ${listaNotas.listaInterna[posicao].texto} </p>
+                             </form>`;
         }
     }
 
