@@ -1,7 +1,7 @@
 var listaNotas = {
     secao: document.getElementsByClassName("notes")[0],
     listaInterna: [],
-    adiciona: (novoTitulo, novoTexto) => {
+    adiciona(novoTitulo, novoTexto) {
         var nota = {
             titulo: novoTitulo,
             texto: novoTexto,
@@ -10,15 +10,15 @@ var listaNotas = {
         this.listaInterna.push(nota);
         // atualizarSecao(this.secao);
     },
-    remove: (posicao) => {
+    remove (posicao) {
         this.listaInterna.splice(posicao, 1);
         atualizarSecao(this.secao);
     },
-    edita: (posicao) => {
+    edita(posicao) {
         this.listaInterna[posicao].editando = true;
         atualizarSecao(this.secao);
     },
-    salva:(posicao, novoTitulo, novoTexto) => {
+    salva(posicao, novoTitulo, novoTexto)  {
         this.listaInterna[posicao].titulo = novoTitulo;
         this.listaInterna[posicao].texto = novoTexto;
         this.listaInterna[posicao].editando = false;
