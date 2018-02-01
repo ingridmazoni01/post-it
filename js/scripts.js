@@ -1,6 +1,10 @@
-var listaNotas = {
-    secao: document.getElementsByClassName("notes")[0],
-    listaInterna: [],
+class Notas  {
+    constructor(){
+         secao: document.getElementsByClassName("notes")[0];
+         listaInterna: [];
+    }
+   
+
     adiciona(novoTitulo, novoTexto) {
         var nota = {
             titulo: novoTitulo,
@@ -9,28 +13,31 @@ var listaNotas = {
         };
         this.listaInterna.push(nota);
         // atualizarSecao(this.secao);
-    },
+    }
     remove (posicao) {
         this.listaInterna.splice(posicao, 1);
         atualizarSecao(this.secao);
-    },
+    }
     edita(posicao) {
         this.listaInterna[posicao].editando = true;
         atualizarSecao(this.secao);
-    },
+    }
     salva(posicao, novoTitulo, novoTexto)  {
         this.listaInterna[posicao].titulo = novoTitulo;
         this.listaInterna[posicao].texto = novoTexto;
         this.listaInterna[posicao].editando = false;
         atualizarSecao(this.secao);
-    },
-    pega: function(posicao) {
+    }
+    pega(posicao) {
         return this.listaInterna[posicao];
-    },
-    contaTotal: function() {
+    }
+    contaTotal() {
         return this.listaInterna.length;
     }
 };
+
+var listaNotas=new Notas();
+
 
 export default listaNotas;
 
