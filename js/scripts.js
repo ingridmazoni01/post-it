@@ -84,3 +84,31 @@ function removerNota(evento, posicao) {
     evento.stopPropagation();
     listaNotas.remove(posicao);
 }
+
+
+class Pessoa{
+    
+      
+    constructor(nome,sobrenome,peso,altura,idade){
+       this.nome=nome;
+       this.sobrenome=sobrenome;
+       this.peso=peso; 
+       this.altura=altura;
+       this.idade=idade;
+            
+    }
+
+    nomeCompleto(){
+        console.log(this.nome+" "+this.sobrenome);
+    }
+
+    anoNascimento(){
+        console.log(new Date().getFullYear()-this.idade);
+    }
+
+    calculaImc(){
+        console.log(this.peso/Math.pow(this.altura));
+    }
+
+
+}
