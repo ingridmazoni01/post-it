@@ -107,7 +107,7 @@ class Pessoa{
     }
 
     calculaImc(){
-        console.log(this.peso/Math.pow(this.altura));
+        console.log(this.peso/Math.pow(this.altura,2));
     }
 
 
