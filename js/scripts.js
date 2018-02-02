@@ -1,18 +1,65 @@
+class Nota{
+     constructor(novoTitulo,novoTexto){
+        
+        titulo: novoTitulo;
+        texto: novoTexto;
+        editando: false;
+    }
+
+    get titulo(){
+
+    }
+
+    get texto(){
+        
+    }
+
+    get titulo(){
+        
+    }
+
+    set titulo(tituloAlterado){
+        if(tituloAlterado!=null && tituloAlterado.length>5){
+            this.titulo=tituloAlterado;
+        }
+        else{
+            alert("Preencha o titulo");
+        }
+        
+    }
+
+     set texto(novoTexto){
+        
+    }
+
+     set titulo(){
+        
+    }
+
+
+}
+
+
 class Notas  {
     constructor(){
          secao: document.getElementsByClassName("notes")[0];
          listaInterna: [];
+       
     }
    
 
     adiciona(novoTitulo, novoTexto) {
-        var nota = {
-            titulo: novoTitulo,
-            texto: novoTexto,
-            editando: false
-        };
-        this.listaInterna.push(nota);
-        // atualizarSecao(this.secao);
+        // var nota = {
+        //     titulo: novoTitulo,
+        //     texto: novoTexto,
+        //     editando: false
+        // };
+
+      
+        this.listaInterna.push(new Nota(novoTitulo,novoTexto));
+        atualizarSecao(this._secao);
+
+
     }
     remove (posicao) {
         this.listaInterna.splice(posicao, 1);
@@ -112,3 +159,25 @@ class Pessoa{
 
 
 }
+
+class Medico extends Pessoa{
+    constructor(primeiroNome, segundoNome,peso,altura,idade,crm){
+        super(primeiroNome, segundoNome,peso,altura,idade);
+        this._crm=crm;
+        
+    }
+
+    get crm(){
+        return this._crm;
+    }
+
+    set crm(crm){
+        this._crm=crm;
+    }
+}
+
+let mariana=new Medico("Mariana","Muniz",60,1.70,55,"2157486");
+
+
+let pessoa = new Pessoa("Pedro","Almeida",80,1.65,65,"2158497");
+
